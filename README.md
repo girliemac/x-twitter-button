@@ -41,7 +41,8 @@ Attribute  | Options                   | Default             | Description
 `via`   | *string* (username)                   |                | "via @username"
 `related`   | *string* (username)                    |                | Recommended
 `dnt`   | *boolean*                     | `false`               |   Opt out tailored suggestions [?](https://support.twitter.com/articles/20169421)
-
+`height`   | *int*                     |                | `height` style override (px)
+`width`   | *int*                     |                | `width` style override (px)
 
 ## Contributing
 

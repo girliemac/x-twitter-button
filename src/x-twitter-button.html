@@ -1,8 +1,8 @@
-<polymer-element name="x-twitter-button" attributes="lang count size tweetText url hashtag via related dnt">
+<polymer-element name="x-twitter-button" attributes="lang count size tweetText url hashtag via related dnt height width">
 
 	<template>	
 		<iframe scrolling="no" frameborder="0" allowtransparency="true" 
-			src="https://platform.twitter.com/widgets/tweet_button.html?count={{count}}&id=twitter-widget-0&lang={{lang}}&hashtags={{hashtag}}&original_referer={{referer}}&size={{size}}&text={{tweetText}}&url={{url}}&via={{via}}&related={{related}}&dnt={{dnt}}" class="twitter-share-button twitter-tweet-button twitter-count-{{count}} {{size}}" title="Twitter Tweet Button" data-twttr-rendered="true"></iframe>
+			src="https://platform.twitter.com/widgets/tweet_button.html?count={{count}}&id=twitter-widget-0&lang={{lang}}&hashtags={{hashtag}}&original_referer={{referer}}&size={{size}}&text={{tweetText}}&url={{url}}&related={{related}}&dnt={{dnt}}{{via}}" class="twitter-share-button twitter-tweet-button twitter-count-{{count}} {{size}}" title="Twitter Tweet Button" data-twttr-rendered="true" style="height:{{height}}px;width:{{width}}px"></iframe>
 		
 			
 		<style>
@@ -22,9 +22,21 @@
 			tweetText: this.tweetText ? this.tweetText : escape(document.title),
 			url: this.url ? this.url : encodeURIComponent(window.location.href),
 			hashtag: this.hashtag ? this.hashtag : '',
-			via: '',
 			related: this.related ? this.related : '',
-			dnt: this.dnt ? true : false
+			dnt: this.dnt ? true : false,
+			height: '',
+			width: '',
+			ready: function() {
+				this.getVia()
+				},
+			getVia: function() {
+				var v = '';
+				if(this.via){
+					v = '&via='+this.via;
+				}
+				this.via = v;
+			}
+			
 		});
 	</script>
 
